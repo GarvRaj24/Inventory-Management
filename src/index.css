@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #fbfbf9;
+    color: #1c1917;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  body.dark {
+    background-color: #0c0a09;
+    color: #f5f5f4;
+  }
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Boutique Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 113, 108, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 113, 108, 0.45);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(168, 162, 158, 0.2);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 162, 158, 0.4);
+}
+
+/* Frosted Glass Backdrop utilities */
+.frosted-glass {
+  background-color: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.dark .frosted-glass {
+  background-color: rgba(15, 14, 13, 0.82);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.frosted-modal-overlay {
+  background-color: rgba(12, 10, 9, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Custom Range Slider Styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  height: 24px;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: #e7e5e4;
+  border-radius: 9999px;
+  transition: background-color 0.2s;
+}
+
+.dark input[type="range"]::-webkit-slider-runnable-track {
+  background: #292524;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #1c1917;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  margin-top: -7px;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.dark input[type="range"]::-webkit-slider-thumb {
+  background: #f5f5f4;
+  border: 2px solid #1c1917;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.18);
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(1.28);
+}
+
+/* Custom Checkbox Design */
+.boutique-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 1.5px solid #a8a29e;
+  border-radius: 0.25rem;
+  outline: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  display: inline-grid;
+  place-content: center;
+  position: relative;
+  background-color: transparent;
+}
+
+.boutique-checkbox:hover {
+  border-color: #78716c;
+}
+
+.dark .boutique-checkbox {
+  border-color: #57534e;
+}
+
+.dark .boutique-checkbox:hover {
+  border-color: #a8a29e;
+}
+
+.boutique-checkbox:checked {
+  background-color: #1c1917;
+  border-color: #1c1917;
+}
+
+.dark .boutique-checkbox:checked {
+  background-color: #f5f5f4;
+  border-color: #f5f5f4;
+}
+
+.boutique-checkbox:checked::after {
+  content: "";
+  width: 0.35rem;
+  height: 0.65rem;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.dark .boutique-checkbox:checked::after {
+  border-color: #0c0a09;
+}
+
+/* Masonry items support */
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
+
+/* Smooth Product Grid Transition Effects */
+.product-card-enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-card-exit {
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes bounceIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
